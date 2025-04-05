@@ -46,27 +46,14 @@
 
       <h2>Problem Description (including questions we want to answer)</h2>
       <p>
-        Optimization of real time shading is important because these processes
-        often include lots of simple, repetitive math. There is a lot of room
-        for speed up through methods like multithreading/parallelization.
-        <br />
-        <br />
-        The main challenge will be to successfully parallelize the shaders and
-        get them to work in real time as we are moving around the environment.
-        We are working as well primarily with very heavily stylized shading
-        styles, which may require additional workshopping to implement.
+        Optimization of real time shading is important because these processes often include lots of simple, repetitive math. There is a lot of room for speed up through methods like multithreading/parallelization.
+<br><br>
+The main challenge will be to successfully parallelize the shaders and get them to work in real time as we are moving around the environment. We are working as well primarily with very heavily stylized shading styles, which may require additional workshopping to implement.
+<br><br>
+Cel shading in animation is a relatively new area. We will examine previous research papers including 2D Shading for Cel Animation by Hudon et. al. , which implements a semi-automatic shading tool which can be used for image generation or animation. We improve upon this tool by adding multiple light sources and using a halftone shading method rather than a block shading method. We think that this will be an interesting challenge because a semi-automatic shading tool is one that could improve different styles of comic art and animation.
+<br><br>
+Additionally, this kind of automated cel shading is relatively simple for 3-D shapes due to, well, the geometry and the way in which lighting is able to be calculated through rays and the multidimensional intersection between different shapes. And there are some existing rudimentary methods for animators to perform 2-D cel shading, but they vary greatly in quality and efficiency (though admittedly a part of this is based on the user; it is hard to fully automate this procedure because as-is, it isn’t able to anticipate the dips and rises in a flat image). This paper offers one way in which automated cel shading can be performed quickly, and we hope to improve upon the visuals as well.
 
-        <br />
-        <br />
-        Cel shading in animation is a relatively new area. We will examine
-        previous research papers including 2D Shading for Cel Animation by
-        Hudon, Pagés, Grogan, Ondrej, and Smolié, which implements a
-        semi-automatic shading tool which can be used for image generation or
-        animation. We improve upon this tool by adding multiple light sources
-        and using a halftone shading method rather than a block shading method.
-        We think that this will be an interesting challenge because a
-        semi-automatic shading tool is one that could improve different styles
-        of comic art and animation.
       </p>
       <h2>Goals and Deliverables</h2>
       <h3>Baseline Plan</h3>
@@ -180,6 +167,13 @@
 			<li><a href="https://dl.acm.org/doi/abs/10.1145/3229147.3229148">Cel Shading Semi-Automatic Method for Animation</a></li>
 			<li><a href="https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S12/final_projects/hutchins_kim.pdf">Cel Shading - Highlight/Texture Techniques (uses OpenGL!)</a></li>
 		</ul>
+		<br>
+		Books and Articles
+		<ul>
+			<li>Fundamentals of Computer Graphics by Peter Shirley (2005)</li>
+		</ul>
+		<br />
+
 	  </p>
       <!-- <p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
 		<div style="display: flex; flex-direction: column; align-items: center;">
