@@ -1,0 +1,217 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      .container {
+        margin: 0 auto;
+        padding: 60px 20%;
+      }
+
+      figure {
+        text-align: center;
+      }
+
+      img {
+        display: inline-block;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Final Project Milestone Report: Semi-Automated Vector Based 2D Cel Shading</h1>
+      <div style="text-align: center">
+        Names: Noah Abji, Siyona Sarma, Ian Wong, Jay Yoo
+      </div>
+
+      <!--
+		We've already added one heading per part, to make your write-up as navigable when grading. Please fit your write-up within these sections!
+		-->
+
+      <h1>Preliminary results</h1>
+
+      <p>
+        We have added two new tools to Pencil2D to support the Semi-Automated 2D Cel Shading
+        technique. The first tool enables the user to add a new light source 
+        and configure the direction of the light.
+        The second tool performs the cell shading process on the selected object
+        with a user
+        
+      </p>
+
+      <h1>Progress reflection</h1>
+
+      <h1></h1>
+
+      <p>We will be reimplementing the semi-automatic shading technique for 2D images as described by the paper "2D Shading for Cel Animation" by Hudon et. al. We will improve upon the accuracy of the model while utilizing new shading techniques.</p>
+
+      <h2>Problem Description (including questions we want to answer)</h2>
+      <p>
+        Optimization of real time shading is important because these processes often include lots of simple, repetitive math. There is a lot of room for speed up through methods like multithreading/parallelization.
+<br><br>
+The main challenge will be to successfully parallelize the shaders and get them to work in real time as we are moving around the environment. We are working as well primarily with very heavily stylized shading styles, which may require additional workshopping to implement.
+<br><br>
+Cel shading in animation is a relatively new area. We will examine previous research papers including 2D Shading for Cel Animation by Hudon et. al. , which implements a semi-automatic shading tool which can be used for image generation or animation. We improve upon this tool by adding multiple light sources and using a halftone shading method rather than a block shading method. We think that this will be an interesting challenge because a semi-automatic shading tool is one that could improve different styles of comic art and animation.
+<br><br>
+Additionally, this kind of automated cel shading is relatively simple for 3-D shapes due to, well, the geometry and the way in which lighting is able to be calculated through rays and the multidimensional intersection between different shapes. And there are some existing rudimentary methods for animators to perform 2-D cel shading, but they vary greatly in quality and efficiency (though admittedly a part of this is based on the user; it is hard to fully automate this procedure because as-is, it isn’t able to anticipate the dips and rises in a flat image). This paper offers one way in which automated cel shading can be performed quickly, and we hope to improve upon the visuals as well.
+
+      </p>
+      <h2>Goals and Deliverables</h2>
+      <h3>Baseline Plan</h3>
+      <p>
+        We plan to generate multiple 2D images using a modified version of cel
+        (toon) shaders where the shading is shown via dots (halftone shading)
+        rather than blocks (images below). We want to first be able to
+        understand how to automate shading systems for 2D images and be able to
+        implement self-shadowing techniques while ensuring accuracy. The quality
+        of the outcome will be determined by the accuracy of the placement of
+        shadows in a rendering of a 2D image. It should also be noted that
+        adding additional functionality will possibly cause our system to run
+        slower than the one described in the paper and make a difficult final
+        comparison in terms of performance.
+      </p>
+      <h3>Images we hope to Create</h3>
+      <p>Here are some examples of images we may hope to create!</p>
+      <div style="display: flex; flex-direction: column; align-items: center">
+        <table
+          style="width: 100%; text-align: center; border-collapse: collapse"
+        >
+          <tr>
+            <td style="text-align: center">
+              <img src="cel_shading.png" width="400px" />
+              <figcaption>Cel shading</figcaption>
+            </td>
+            <td style="text-align: center">
+              <img src="halftone_shading.png" width="400px" />
+              <figcaption>Halftone shading</figcaption>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center">
+              <img src="cel_shading_paper.png" width="600px" />
+              <figcaption>
+                An example of cel shading from the paper we cite
+              </figcaption>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h3>Measuring Performance and Quality</h3>
+      <p>
+        As a baseline, as we implement the replica version of the cel shader as
+        defined by the paper we linked, we will compare our rendering times for
+        similar simulations with those listed in the paper. As we attempt to
+        both optimize and add functionality to our system, quality can be
+        measured by comparing rendered images from our project with those in the
+        paper, where we will hopefully see an improvement in quality, and
+        performance can be measured in the runtime of our code versus metrics
+        from the paper. We will also create a demo of rendering each image with
+        and without Pencil2D and comparing rendering times with the original
+        paper.
+      </p>
+      <h3>Additional Goals</h3>
+      <p>
+        If we end up being ahead of schedule, we would like to animate a
+        sequence of images where the light source(s) change(s) or a scene where
+        there are multiple light sources. This would only be implemented after
+        the baseline plan because it would require a lot more work with Pencil
+        2D and would only be possible if the model created above had a high
+        accuracy with shading.
+      </p>
+      <h2>Schedule</h2>
+      <h3>Week 1</h3>
+      <ul>
+        <li>Attempt to replicate the cel shading as-is from the paper</li>
+        <li>Get accustomed to the platform and language(s) we are using</li>
+      </ul>
+      <h3>Week 2</h3>
+      <ul>
+        <li>
+          Continue replicating the cel shader (we anticipate this to be the most
+          difficult part, so we am allotting multiple weeks for it)
+        </li>
+        <li>
+          Adjust the shader so that it works with a halftone design as well as
+          the solid shading in the original
+        </li>
+      </ul>
+      <h3><b>Graded Milestone [1pg Report + 1 min Video] - 4/20</b></h3>
+      <h3>Week 3</h3>
+      <ul>
+        <li>
+          Implement stylistic changes like warm->cool tone shading and
+          shadow->light transition shades
+        </li>
+        <li>
+          Start ideating and creating rough draft of final image (animation?)
+        </li>
+      </ul>
+      <h3>Week 4</h3>
+      <ul>
+        <li>Polishing final presentation and cleaning codebase</li>
+      </ul>
+      <h3><b>Final Deliverables [Report + Video] - 5/4</b></h3>
+      <h3><b>Final Presentations - 5/5</b></h3>
+      <h2>Resources</h2>
+      <p>Software: Pencil2D–developed in C++, using QT framework. Pencil2D is open source with a fairly active contributor base.
+		<br />
+		<br />
+		Paper Citation (<a target="_blank" href="https://dl-acm-org.libproxy.berkeley.edu/doi/pdf/10.1145/3229147.3229148">LINK</a>)
+		<br />
+		Hudon, Matis, et al. “2D Shading for Cel Animation.” Proceedings of the Joint Symposium on Computational Aesthetics and Sketch-Based Interfaces and Modeling and Non-Photorealistic Animation and Rendering, ACM, 2018, pp. 1–12, https://doi.org/10.1145/3229147.3229148.
+		<br />
+		<br />
+		Cel Shading Resources
+		<ul>
+			<li><a href="https://www.theseus.fi/bitstream/handle/10024/787699/Kahari_Roni.pdf?sequence=3&isAllowed=y">What is Cel Shading?</a></li>
+			<li><a href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=4134d230132b3639aef4c8e05557beea8c94ae81">Cel Shading Techniques</a></li>
+			<li><a href="https://dl.acm.org/doi/abs/10.1145/3229147.3229148">Cel Shading Semi-Automatic Method for Animation</a></li>
+			<li><a href="https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S12/final_projects/hutchins_kim.pdf">Cel Shading - Highlight/Texture Techniques (uses OpenGL!)</a></li>
+		</ul>
+		<br>
+		Books and Articles
+		<ul>
+			<li>Fundamentals of Computer Graphics by Peter Shirley (2005)</li>
+		</ul>
+		<br />
+
+	  </p>
+      <!-- <p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="clothsim.png" width="400px"/>
+				  <figcaption>Caption goes here.</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="clothsim.png" width="400px"/>
+				  <figcaption>Caption goes here.</figcaption>
+				</td>
+			  </tr>
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="clothsim.png" width="400px"/>
+				  <figcaption>Caption goes here.</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="clothsim.png" width="400px"/>
+				  <figcaption>Caption goes here.</figcaption>
+				</td>
+			  </tr>
+			</table>
+		</div> -->
+    </div>
+  </body>
+</html>
