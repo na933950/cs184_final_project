@@ -53,6 +53,44 @@
       <h1>Technical Approach</h1>
 
       <h2>
+        Implementation
+      </h2>
+      <h3>
+        Assumptions
+      </h3>
+      <p>
+        We make the following assumptions to use our semi-automatic shading algorithm - vector images (shapes drawn on the canvas) have a sinusoidal shape in the axis towards the light source. Additionally, we assume all vector images the user draws in the layer where they use our tool have a properly closed border (failure to do this can cause unexpected behavior)
+      </p>
+      <h3>
+        Determining the Shade Contour
+      </h3>
+      <p>
+        At a high level - the shade contour can be determined by casting a ray through an arbitrary click point. We assume a sinusoidal shape of the vector image in the direction of the light source. Using this assumed sinusoidal shape, we can determine where the light ray intersects with the sinusoid above the click point and record a shade as the projection of that point onto the 2D canvas. However, one advantage of our algorithm is that it operates entirely in 2D space - with the only 3D point we record being the light source itself so we can raise or lower it with respect to the canvas. We assume the camera also is a positive and infinite Z distance away from the plane (so a normalized ray cast towards the camera would always be [0, 0, 1]). Once we have determined this shade point, we use the direction spawned by the closest shade point to create a search interval for another arbitrary point in the vector image. We then determine the shade point similarly along the sinusoid in the direction of the light source relative to that point, and continue this iteration in both directions until we exit the border of the vector image. We decrease the search interval if this happens so the edge of the contour is also smooth and converges with the edge of the vector image. Once we have determined the series of shade points, we add the ordered series of border intersections (the side of which changes depending on convexity/concavity), which we then draw a bezier curve through to determine the shade area. A visual of this process is below.
+      </p>
+
+      <table>
+        <tr>
+          <td>
+            <img src="shading1.png" width="400px">
+          </td>
+          <td>
+            <img src="shading2.png width=400px">
+          </td>
+        </tr>
+      </table>
+
+      <h3>
+        Determining a Shade Point
+      </h3>
+      <p>
+        For a concave sinusoid can determine a shade point by casting a ray through the point p and determining the inclination angle of that ray, Θ, assuming the point is at z = 0. We can determine where the ray intersects with the vector image, which is defined by a bezier curve, with a pre-existing iterative algorithm. Once the near and far intersections, Nn and Nf are determined (Nn being closer to the light source), we can use theta to determine the proper distance vector for which to interpolate across the vector image in 2D space with the following equation: \(S_i = N_f + \cos(\theta)\frac{N_n - N_f}{2}\)
+      </p>
+      <p>
+        For a convex shape, we simply switch Nn and Nf, and use the list of Nn as the border points.
+
+      </p>
+
+      <h2>
         Problems Encountered
       </h2>
 
@@ -74,6 +112,7 @@
 
       <h1>Results</h1>
 
+      <a href="https://drive.google.com/file/d/18rgiaVKANNgcgHGBhn7y1Wy3TP-NQdl7/view?usp=sharing"><b>Video link</b></a>
 	    
       <h1>References</h1>
       <p>Software: Pencil2D–developed in C++, using QT framework. Pencil2D is open source with a fairly active contributor base.
@@ -97,7 +136,7 @@
         Noah implemented the brunt of the algorithm for the light ray, convex points, and populating the shadow.
       </p>
       <p>
-        Ian also worked on implementing the algorithm, as well as fixing artifacts for various discontinuities and gaps.
+        Ian worked on self shading, as well as fixing artifacts for various discontinuities and gaps.
       </p>
       <p>
         Siyona worked on implementing halftone shading.
