@@ -90,6 +90,7 @@
       <p>
         For a convex shape, we simply switch Nn and Nf, and use the list of Nn as the border points.
 
+        As such, for a light at a lower inclination angle, the shade contour will be larger, and for a higher inclination angle the shade contour will be be smaller. Resulting demonstrating this are below.
       </p>
 
       <h3>
@@ -98,10 +99,13 @@
       </h3>
 <p>
   Modeling the sinusoid with \(y = d (\sin(\frac{x}{d}))\), where d is the distance between the near and far border points, we can determine the tangent equation to the sinusoid at any distance m across it to be \( y = cos(\frac{m}{d})(x-m)+dsin(\frac{m}{d}) \). Using this equation, we can determine the normal vector to the sinusoid and solve for m where this normal vector is equal to the half vector H between the ray cast on the sinusoid and the one pointing directly towards the camera. This half vector H is always equal to \(H = \frac{L + V}{||L+V||}\) where \(L = (cos(\theta{}), sin(\theta{}))\) and \(V = (0, 1)\). The determined point would be the center of the specular highlight, assuming the normal vector to the sinusoid does not vary across the axis orthogonal to the ray cast from the light source, when projected into 2D. As such, using the same iterative algorithm as the shade points allows us to determine the specular highlight line for an anisotropic microfacet BSDF. We move a certain distance in both directions from this line to determine the highlight, which increases for a more diffuse BSDF. For an isotropic specular highlight, we use the center of this shade line to also control the highlight in the other direction. A diagram of the half vector and normal vector is below:
-
 </p>
 
 <img src="image.png" width="600px">
+
+<p>
+  Given this model, as the inclination angle decreases, the specular highlight will be closer to the center, and as it decreases, the highlight will be closer to the edge. Additionall, a more diffuse BDSF model leads to a wider specular highlight while a more concentrated one will lead to a smaller one. Results demonstrating this are below.
+</p>
 
       <h3>
         Self-shading
