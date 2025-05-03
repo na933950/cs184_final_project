@@ -49,9 +49,9 @@
       <h1>Technical Approach</h1>
       <h2>Semi-automated cel-shading</h2>
 
-      <h2>
+      <h1>
         Problems Encountered
-      </h2>
+      </h1>
 
       <p>
         We encountered a lot of initial difficulty when figuring out how to implement convex shading. Translating a 3-D light ray to a 2-D set of points required complex calculations, not all of which were detailed in the paper that we were referencing. Additionally, after implementing the base algorithm, there were lots of different artifacts relating to shape continuity, intersections between the shadow and the shape border, intersections between multiple shadows, and more. These all had to be individually fixed.
@@ -61,17 +61,14 @@
         Aside from the algorithm, we also faced difficulty when implementing graphic elements for our algorithm. Although it existed, we couldn't actually test it until we had a way to interact with the scene. This required us to wade through the code base and learn about using real-time signals from Qt, the framework that the GUI was based off of, to do things like create new layers, tools, and light positions. 
       </p>
 
-      <h2>
+      <h1>
         Lessons Learned
-      </h2>
+      </h1>
 
       <p>
         We learned a lot about the 3-D to 2-D shadow creation algorithm. Although some things were more straightforward to implement from class, like specularity on our objects, we also had to implement some novel algorithms from the paper. We had a written description and some mathematical formulas to work off of, but that was it. 
       </p>
 
-      <h1>Results</h1>
-
-	    
       <h1>References</h1>
       <p>Software: Pencil2D–developed in C++, using QT framework. Pencil2D is open source with a fairly active contributor base.
       <br />
