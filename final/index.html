@@ -41,16 +41,13 @@
 
       <h1>Abstract</h1>
       <p>
-        We have added two new tools to the Pencil2D drawing program to support semi-automated 2D cel shading
-        and half-tone shading. The first tool enables the user to add a new light
-        source 
-        and configure the direction of the light. The second tool performs the cell
-        shading process on the selected object
-        with a user
-        
+        We have added a new tool to the Pencil2D drawing program to support semi-automated 2D cel shading
+        for concave and convex shapes, half-tone shading, and specular highlights.
+        The tool performs the shading process on a selected object with a user-defined light source.
       </p>
 
       <h1>Technical Approach</h1>
+      <h2>Semi-automated cel-shading</h2>
 
       <h2>
         Implementation
@@ -126,7 +123,7 @@
 </p>
       <h2>
         Problems Encountered
-      </h2>
+      </h1>
 
       <p>
         We encountered a lot of initial difficulty when figuring out how to implement convex shading. Translating a 3-D light ray to a 2-D set of points required complex calculations, not all of which were detailed in the paper that we were referencing. Additionally, after implementing the base algorithm, there were lots of different artifacts relating to shape continuity, intersections between the shadow and the shape border, intersections between multiple shadows, and more. These all had to be individually fixed.
@@ -136,9 +133,9 @@
         Aside from the algorithm, we also faced difficulty when implementing graphic elements for our algorithm. Although it existed, we couldn't actually test it until we had a way to interact with the scene. This required us to wade through the code base and learn about using real-time signals from Qt, the framework that the GUI was based off of, to do things like create new layers, tools, and light positions. 
       </p>
 
-      <h2>
+      <h1>
         Lessons Learned
-      </h2>
+      </h1>
 
       <p>
         We learned a lot about the 3-D to 2-D shadow creation algorithm. Although some things were more straightforward to implement from class, like specularity on our objects, we also had to implement some novel algorithms from the paper. We had a written description and some mathematical formulas to work off of, but that was it. Aside from the algorithm, one of the biggest things we had to learn was the Pencil2D code base. The code base is huge, and adding one feature can mean editing more than ten files. We also learned how to edit a GUI in Qt, including interactivity and custom UI elements. 
@@ -153,6 +150,7 @@
       <img src="comparisons.png" width="400px">
 
       
+
 
 
       <h1>References</h1>
@@ -177,13 +175,14 @@
         Noah implemented the brunt of the algorithm for the light ray, convex points, and populating the shadow.
       </p>
       <p>
-        Ian worked on self shading, as well as fixing artifacts for various discontinuities and gaps.
+
+        Ian implemented self shadowing and contributed to the primary cel-shading algorithm, as well as debugging and fixing artifacts.
       </p>
       <p>
-        Siyona worked on implementing halftone shading.
+        Siyona implemented halftone shading.
       </p>
       <p>
-        Jay worked on fixing visual artifacts and GUI elements.
+        Jay fixed visual artifacts and created GUI elements.
       </p>
     </div>
   </body>
