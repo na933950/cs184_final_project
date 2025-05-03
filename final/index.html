@@ -90,6 +90,40 @@
 
       </p>
 
+      <h3>
+        Specular highlights
+
+      </h3>
+<p>
+  Modeling the sinusoid with \(y = d (\sin(\frac{x}{d}))\), where d is the distance between the near and far border points, we can determine the tangent equation to the sinusoid at any distance m across it to be $y = cos(\frac{m}{d})(x-m)+dsin(\frac{m}{d})$. Using this equation, we can determine the normal vector to the sinusoid and solve for m where this normal vector is equal to the half vector H between the ray cast on the sinusoid and the one pointing directly towards the camera. This half vector H is always equal to \(H = \frac{L + V}{||L+V||}\) where \(L = (cos(\theta{}), sin(\theta{}))\) and \(V = (0, 1)\). The determined point would be the center of the specular highlight, assuming the normal vector to the sinusoid does not vary across the axis orthogonal to the ray cast from the light source, when projected into 2D. As such, using the same iterative algorithm as the shade points allows us to determine the specular highlight line for an anisotropic microfacet BSDF. We move a certain distance in both directions from this line to determine the highlight, which increases for a more diffuse BSDF. For an isotropic specular highlight, we use the center of this shade line to also control the highlight in the other direction. A diagram of the half vector and normal vector is below:
+
+</p>
+
+<img src="image.png" width="600px">
+
+      <h3>
+        Self-shading
+      </h3>
+<p>
+  Self shading is triggered by a user drag input, starting from the object that will cast a shadow and ending on the object that will receive the shadow.  Each of the far neighbors as computed in the primary cel shading algorithm are projected in the direction away from the light by a distance  determined by the length of the user drag. Projected points that lie in the  shadow-receiving object make up the final shadow.
+
+</p>
+<h3>
+  Halftone shading
+</h3>
+<p>
+  Halftone shading is triggered by the halftone checkbox and the utilisation of the cel shade tool. The halftone shade creates ellipses of a certain radius within the Bezier area previously determined. The methods for halftone shading iterate through the points of the region leaving a space of 6.0 or 4.0 depending on the size of the area. This number for spacing was determined to ensure a consistent pattern but also space out the ellipses enough to be seen in the GUI. The radius of the ellipse drawn is determined by the position of the point to the center of the area to be shaded. This variability in ellipses radii was created for a better visual effect. For the specular highlights, the radius increased closer to the center, while the opposite is true for the shaded regions. 
+
+</p>
+
+<h3>
+  Integration into Pencil2D
+
+</h3>
+<p>
+  We first considered implementing the same shade and light layers as the paper, which would render the light point as its own layer and the shadows on a different layer from the lineart. After they were implemented, we decided that it would actually be better to draw the shadow directly on the vector layer of the lineart, as this would also allow for interesting effects like layering shadows. We also had to edit the Pencil2D GUI to make the halftone shading togglable. Finally, we added sliders that allow the user to dynamically edit the light source through the application, instead of having to hard code it.
+
+</p>
       <h2>
         Problems Encountered
       </h2>
@@ -107,13 +141,20 @@
       </h2>
 
       <p>
-        We learned a lot about the 3-D to 2-D shadow creation algorithm. Although some things were more straightforward to implement from class, like specularity on our objects, we also had to implement some novel algorithms from the paper. We had a written description and some mathematical formulas to work off of, but that was it. 
+        We learned a lot about the 3-D to 2-D shadow creation algorithm. Although some things were more straightforward to implement from class, like specularity on our objects, we also had to implement some novel algorithms from the paper. We had a written description and some mathematical formulas to work off of, but that was it. Aside from the algorithm, one of the biggest things we had to learn was the Pencil2D code base. The code base is huge, and adding one feature can mean editing more than ten files. We also learned how to edit a GUI in Qt, including interactivity and custom UI elements. 
       </p>
 
       <h1>Results</h1>
 
       <a href="https://drive.google.com/file/d/18rgiaVKANNgcgHGBhn7y1Wy3TP-NQdl7/view?usp=sharing"><b>Video link</b></a>
+
+      <a href="https://docs.google.com/presentation/d/1-92WHlITnFbC1VxqlwPaHWcfykUVc6IuMFWjeQH4BJE/edit?usp=sharing"><b>Slides Link</b></a>
 	    
+      <img src="comparisons.png" width="400px">
+
+      
+
+
       <h1>References</h1>
       <p>Software: Pencil2D–developed in C++, using QT framework. Pencil2D is open source with a fairly active contributor base.
       <br />
