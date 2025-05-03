@@ -41,16 +41,13 @@
 
       <h1>Abstract</h1>
       <p>
-        We have added two new tools to the Pencil2D drawing program to support semi-automated 2D cel shading
-        and half-tone shading. The first tool enables the user to add a new light
-        source 
-        and configure the direction of the light. The second tool performs the cell
-        shading process on the selected object
-        with a user
-        
+        We have added a new tool to the Pencil2D drawing program to support semi-automated 2D cel shading
+        for concave and convex shapes, half-tone shading, and specular highlights.
+        The tool performs the shading process on a selected object with a user-defined light source.
       </p>
 
       <h1>Technical Approach</h1>
+      <h2>Semi-automated cel-shading</h2>
 
       <h2>
         Problems Encountered
@@ -97,13 +94,13 @@
         Noah implemented the brunt of the algorithm for the light ray, convex points, and populating the shadow.
       </p>
       <p>
-        Ian also worked on implementing the algorithm, as well as fixing artifacts for various discontinuities and gaps.
+        Ian implemented self shadowing and contributed to the primary cel-shading algorithm, as well as debugging and fixing artifacts.
       </p>
       <p>
-        Siyona worked on implementing halftone shading.
+        Siyona implemented halftone shading.
       </p>
       <p>
-        Jay worked on fixing visual artifacts and GUI elements.
+        Jay fixed visual artifacts and created GUI elements.
       </p>
     </div>
   </body>
